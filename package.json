@@ -1,0 +1,1 @@
+{"description":"Velvet Horizon Cover Studio — turn your photos into GTA 6-style cover art (make.fun gta6-cover-art-01 entry)","engines":{"node":">=22.18"},"name":"gta6-cover-art-01-entry-v5","private":true,"scripts":{"start":"node main.ts"},"type":"module","version":"1.0.0"}

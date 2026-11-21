@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velvet Horizon — GTA 6 Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VH</span>
+    <div>
+      <h1>VELVET HORIZON <span>Cover Studio</span></h1>
+      <p>Turn your own photos into a GTA&nbsp;6-style cover &mdash; starring you and your crew.</p>
+    </div>
+  </div>
+  <div class="privacy">🔒 100% client-side &mdash; no photo ever leaves your device</div>
+</header>
+
+<main class="studio">
+  <section class="stage-col">
+    <div class="stage-toolbar">
+      <div class="seg" id="sizeSeg" role="group" aria-label="Canvas size">
+        <button data-size="16:9" class="on">16:9</button>
+        <button data-size="1:1">1:1</button>
+        <button data-size="4:5">4:5</button>
+      </div>
+      <span class="stage-hint">Canvas size = export size. Click a panel to crop it, click a role tag to rename it.</span>
+    </div>
+
+    <!-- The cover. Panels + title + strips are rendered by app.js from state. -->
+    <div class="cover-wrap">
+      <div id="cover" class="cover" aria-label="Cover preview"></div>
+    </div>
+
+    <div class="stage-actions">
+      <button id="exportBtn" class="btn-primary">⬇ Export PNG</button>
+      <button id="shuffleBtn" class="btn-ghost">🔀 Shuffle cast</button>
+      <button id="resetBtn" class="btn-ghost">↺ Reset demo cast</button>
+      <span id="exportNote" class="export-note"></span>
+    </div>
+  </section>
+
+  <aside class="panel-col">
+    <section class="card">
+      <h2>1 · Your photos</h2>
+      <label class="upload">
+        <input type="file" id="upload" accept="image/*" multiple>
+        <span>＋ Upload photos&hellip;</span>
+      </label>
+      <p class="muted">Uploads replace the demo cast, panel by panel, and stay on your device. JPG / PNG / WebP.</p>
+      <div id="castStrip" class="cast-strip"></div>
+    </section>
+
+    <section class="card">
+      <h2>2 · Layout</h2>
+      <div class="btn-row" id="layoutRow">
+        <button data-layout="center" class="on">Hero center</button>
+        <button data-layout="left">Hero left</button>
+        <button data-layout="top">Hero top</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3 · Colour grade</h2>
+      <div class="grades" id="gradeRow"></div>
+    </section>
+
+    <section class="card">
+      <h2>4 · Words</h2>
+      <label class="field">Title &mdash; two words
+        <span class="two"><input id="inTitleA" value="VELVET" maxlength="12"><input id="inTitleB" value="HORIZON" maxlength="12"></span>
+      </label>
+      <label class="field">Script subtitle
+        <input id="inSubtitle" value="Where the palms burn gold" maxlength="40">
+      </label>
+      <label class="field">Tagline
+        <input id="inTagline" value="EIGHT CREW · ONE SUNSET · NO WAY BACK" maxlength="60">
+      </label>
+      <label class="field">Press quote
+        <input id="inQuote" value="A GOLDEN-HOUR GETAWAY WITH TEETH" maxlength="60">
+      </label>
+      <label class="field">Publication
+        <input id="inPub" value="THE PALM COURT POST" maxlength="30">
+      </label>
+      <label class="field">Seal text
+        <input id="inSeal" value="BEST CAST" maxlength="18">
+      </label>
+    </section>
+
+    <section class="card" id="cropCard">
+      <h2>5 · Selected panel <span id="selName" class="sel-name"></span></h2>
+      <label class="field">Role label
+        <input id="inRole" value="" maxlength="18">
+      </label>
+      <label class="field">Face position — horizontal
+        <input type="range" id="inPX" min="0" max="100" value="50">
+      </label>
+      <label class="field">Face position — vertical
+        <input type="range" id="inPY" min="0" max="100" value="35">
+      </label>
+      <label class="field">Zoom
+        <input type="range" id="inZoom" min="100" max="220" value="110">
+      </label>
+      <p class="muted">Tip: drag the photo inside its panel to pan, or use the sliders. Faces stay centred by default.</p>
+    </section>
+
+    <section class="card about">
+      <h2>About this cover</h2>
+      <p>VELVET HORIZON is an original cover made with this studio. No Rockstar Games logos, artwork or fonts are used anywhere. The demo cast are AI-generated photographic portraits, free to use. Your uploads are processed in your browser only.</p>
+    </section>
+  </aside>
+</main>
+
+<canvas id="exportCanvas" hidden></canvas>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>
